@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Image Details{% endblock %}
+{% block content %}
+<style>
+    .card {
+        height: 100%; /* Ensure all cards have the same height */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card-img-top {
+        width: 100%; /* Ensure the image takes up the full width of the card */
+        height: 200px; /* Set a fixed height for the image */
+        object-fit: cover; /* Maintain aspect ratio and cover the area */
+        border-radius: 8px 8px 0 0; /* Add rounded corners to the top */
+    }
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1rem; /* Add padding for a cleaner look */
+    }
+    .card-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+    .card-text {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+        color: #666;
+    }
+    .btn {
+        margin-top: 0.5rem;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+    .btn-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+    }
+</style>
+<div class="col-md-3 mb-4">
+    <div class="card">
+        <img src="{{ image.webformatURL }}" class="card-img-top" alt="{{ image.alt }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ image.tags }}</h5>
+            <h6 class="card-text">Likes: {{ image.likes }}</h6>
+            <h6 class="card-text">Downloads: {{ image.downloads }}</h6>
+            <p class="card-text">Type: {{ image.type }}</p>
+            <p class="card-text">Views: {{ image.views }}</p>
+            <p class="card-text">User: {{ image.user }}</p>
+            <div class="btn-group">
+                <a href="{{ image.webformatURL }}" class="btn btn-primary">Full Image</a>
+                <a href="{{ image.pageURL }}" class="btn btn-primary">Visit</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
